@@ -1,0 +1,49 @@
+# POC on Contrast Security
+
+##### Motivation
+With Contrast your applications automatically detect and fix vulnerabilities, identify attacks, and defend themselves. With this POC, I'm checking if it's worth the money as a product.
+
+### Features
+It's a sample Spring Boot application to play with Contrast.
+
+image::docs/images/ScreenShot_contrast-dashboard.png[screenshot]
+
+### How to run
+
+###### Prerequisite
+- JDK 1.8 (Tested with Oracle JDK)
+- Maven 3.x+
+- contrast_security.yaml (Download from contrastsecurity.com and put it in /etc/contrast/java)
+- and contrast.jar (Download from contrastsecurity.com and put it in contrast-resource dir in the project)
+
+###### Example contrast_security.yaml
+```
+api:
+  url: https://ce.contrastsecurity.com/Contrast
+  api_key: my_api_key
+  service_key: my_service_key
+  user_name: my_user_name
+```
+
+###### Build and Run
+```
+$ mvn clean compile install
+```
+```
+$ java -Dcontrast.appname=contrast-security-poc -javaagent:./contrast-resource/contrast.jar -jar target/contrast-security-poc-1.0.0.jar
+```
+
+###### Running With Contrast Maven Plugin
+Set the following environment variables
+```
+CONTRAST_USERNAME=YOUR_USERNAME
+CONTRAST_APIKEY=YOUR_CONTRAST_APIKEY
+CONTRAST_SERVICEKEY=YOUR_CONTRAST_SERVICEKEY
+CONTRAST_ORG_UUID=YOUR_CONTRAST_ORG_UUID
+CONTRAST_APPID=YOUR_CONTRAST_APPID
+CONTRAST_APPNAME=YOUR_CONTRAST_APPNAME
+CONTRAST_SERVERNAME=YOUR_CONTRAST_SERVERNAME
+```
+```
+mvn install -P run-with-contrast
+```

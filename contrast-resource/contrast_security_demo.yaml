@@ -1,0 +1,5 @@
+api:
+  url: https://ce.contrastsecurity.com/Contrast
+  api_key: my_api_key
+  service_key: my_service_key
+  user_name: my_user_name
