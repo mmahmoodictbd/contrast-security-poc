@@ -1,0 +1,3 @@
+FROM alpine:latest
+RUN mkdir /usr/agent
+COPY ./contrast-resource/contrast.jar /usr/agent
