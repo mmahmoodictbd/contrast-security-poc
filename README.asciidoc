@@ -47,3 +47,23 @@ CONTRAST_SERVERNAME=YOUR_CONTRAST_SERVERNAME
 ```
 mvn install -P run-with-contrast
 ```
+
+### App in K8s
+
+###### Build Docker image for agent
+```
+$ docker build -t mmahmood/contrast-agent:latest -f Dockerfile-contrast-agent .
+$ docker push mmahmood/contrast-agent:latest
+```
+
+###### Build Docker image for app
+```
+$ mvn clean compile package
+$ mvn dockerfile:build
+$ docker push mmahmood/contrast-security-poc:latest
+```
+
+###### Deploy POC app with agent in Kubernetes
+```
+$ kubectl apply -f deployment-k8s/contrast-security-poc-all-in-one.yml
+```
