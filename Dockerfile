@@ -1,4 +1,4 @@
-FROM openjdk:8u181-jdk
+FROM adoptopenjdk/openjdk11-openj9:alpine-jre
 VOLUME /tmp
 ARG JAR_FILE
 COPY ${JAR_FILE} /app.jar
