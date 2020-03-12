@@ -1,0 +1,7 @@
+FROM adoptopenjdk/openjdk11-openj9:alpine-jre
+VOLUME /tmp
+ARG JAR_FILE
+COPY ${JAR_FILE} /app.jar
+RUN mkdir /usr/agent
+COPY ./contrast-resource/contrast.jar /usr/agent
+CMD ["java", "-javaagent:/usr/agent/contrast.jar", "-jar", "/app.jar"]
