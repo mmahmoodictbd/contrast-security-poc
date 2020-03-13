@@ -67,3 +67,16 @@ $ docker push mmahmood/contrast-security-poc:latest
 ```
 $ kubectl apply -f deployment-k8s/contrast-security-poc-all-in-one.yml
 ```
+
+### App in Docker Compose
+
+###### Build Docker image with the agent
+```
+$ docker build -t mmahmood/contrast-security-poc-with-contrast-agent:latest --build-arg JAR_FILE=target/contrast-security-poc.jar -f Dockerfile-app-with-contrast-agent .
+$ docker push mmahmood/contrast-security-poc-with-contrast-agent:latest
+```
+
+###### Deploy POC app with agent in Kubernetes
+```
+$ docker-compose up
+```
