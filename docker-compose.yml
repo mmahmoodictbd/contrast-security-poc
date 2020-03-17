@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  contrast-security-poc-with-contrast-agent:
+    container_name: contrast-security-poc-with-contrast-agent
+    image: mmahmood/contrast-security-poc-with-contrast-agent:latest
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    environment:
+      - JAVA_TOOL_OPTIONS=-Dcontrast.server=contrast-security-poc-docker-compose1 -Dapplication.name=contrast-security-poc -Dcontrast.standalone.appname=contrast-security-poc -Dcontrast.env=qa
